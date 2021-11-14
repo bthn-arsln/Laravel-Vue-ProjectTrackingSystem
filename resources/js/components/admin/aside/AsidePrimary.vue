@@ -83,37 +83,6 @@
             data-bs-trigger="hover"
             data-bs-placement="right"
             data-bs-dismiss="click"
-            title="Notifications"
-          >
-            <!--begin::Nav link-->
-            <a
-              class="
-                nav-link
-                btn
-                btn-icon
-                btn-active-color-primary
-                btn-color-gray-400
-                btn-active-light
-              "
-              data-bs-toggle="tab"
-              href="#kt_aside_nav_tab_notifications"
-            >
-              <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-              <span class="svg-icon svg-icon-2x">
-                <i class="fas fa-bell fs-1"></i>
-              </span>
-              <!--end::Svg Icon-->
-            </a>
-            <!--end::Nav link-->
-          </li>
-          <!--end::Nav item-->
-          <!--begin::Nav item-->
-          <li
-            class="nav-item mb-2"
-            data-bs-toggle="tooltip"
-            data-bs-trigger="hover"
-            data-bs-placement="right"
-            data-bs-dismiss="click"
             title="Takım"
           >
             <!--begin::Nav link-->
