@@ -1,0 +1,17 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/login.js": "/js/login.js",
+    "/js/setting.js": "/js/setting.js",
+    "/js/create.js": "/js/create.js",
+    "/js/project.js": "/js/project.js",
+    "/js/specification.js": "/js/specification.js",
+    "/js/todos.js": "/js/todos.js",
+    "/js/notes.js": "/js/notes.js",
+    "/js/edit.js": "/js/edit.js",
+    "/js/profile.js": "/js/profile.js",
+    "/js/team.js": "/js/team.js",
+    "/js/account.js": "/js/account.js",
+    "/js/account-detail.js": "/js/account-detail.js",
+    "/js/account-projects.js": "/js/account-projects.js",
+    "/css/app.css": "/css/app.css"
+}
