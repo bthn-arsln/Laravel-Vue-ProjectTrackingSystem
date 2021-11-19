@@ -156,7 +156,7 @@ var render = function() {
       attrs: { id: "kt_wrapper" }
     },
     [
-      _c("page-header"),
+      _c("page-header", { attrs: { pageTitle: "Projelerim" } }),
       _vm._v(" "),
       _c(
         "div",

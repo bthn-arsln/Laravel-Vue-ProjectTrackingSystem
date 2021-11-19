@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
     <!--begin::Header-->
-    <page-header />
+    <page-header pageTitle="Projelerim" />
     <!--end::Header-->
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
