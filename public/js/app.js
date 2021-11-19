@@ -4768,46 +4768,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AsideSecondary",
   data: function data() {
     return {
-      title: null
+      title: ""
     };
   },
   computed: (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
@@ -6956,6 +6922,12 @@ var routes = [{
       return __webpack_require__.e(/*! import() | notes */ "notes").then(__webpack_require__.bind(__webpack_require__, /*! @/pages/developer/project/notes */ "./resources/js/pages/developer/project/notes.vue"));
     }
   }]
+}, {
+  path: "/projects",
+  name: "MyProjects",
+  component: function component() {
+    return __webpack_require__.e(/*! import() | my-projects */ "my-projects").then(__webpack_require__.bind(__webpack_require__, /*! @/pages/developer/projects */ "./resources/js/pages/developer/projects.vue"));
+  }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
   mode: "history",
@@ -7415,8 +7387,6 @@ var note = {
       }))();
     },
     updateNote: function updateNote(_ref6, note) {
-      var _this = this;
-
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var dispatch, fd;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
@@ -7430,13 +7400,12 @@ var note = {
                 fd.append("_method", "PUT");
                 _context4.next = 7;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/notes/" + note.id, fd).then(function () {
-                  _this.$swal({
+                  vue__WEBPACK_IMPORTED_MODULE_2__["default"].swal({
                     icon: "success",
                     title: "Not başarıyla güncellendi!",
                     showConfirmButton: false,
                     timer: 1500
                   });
-
                   dispatch("loadNotes", {
                     param: note.slug,
                     page: note.page
@@ -33374,8 +33343,8 @@ var render = function() {
                                       {
                                         name: "show",
                                         rawName: "v-show",
-                                        value: _vm.title != null,
-                                        expression: "title != null"
+                                        value: _vm.title != "",
+                                        expression: "title != ''"
                                       }
                                     ],
                                     staticClass:
@@ -33593,75 +33562,13 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              {
-                                staticClass: "menu-item menu-accordion",
-                                attrs: { "data-kt-menu-trigger": "click" }
-                              },
-                              [
-                                _vm._m(2),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "menu-sub menu-sub-accordion menu-active-bg"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "menu-item menu-accordion",
-                                        attrs: {
-                                          "data-kt-menu-trigger": "click"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "menu-link",
-                                            attrs: {
-                                              to: "",
-                                              "active-class": "active",
-                                              exact: ""
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "menu-bullet" },
-                                              [
-                                                _c("span", {
-                                                  staticClass:
-                                                    "bullet bullet-dot"
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "span",
-                                              { staticClass: "menu-title" },
-                                              [_vm._v("Alt Menü")]
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
                               { staticClass: "menu-item" },
                               [
                                 _c(
                                   "router-link",
                                   {
                                     staticClass: "menu-link",
-                                    attrs: { to: "apps/calendar.html" }
+                                    attrs: { to: { name: "MyProjects" } }
                                   },
                                   [
                                     _c("span", { staticClass: "menu-icon" }, [
@@ -33670,7 +33577,7 @@ var render = function() {
                                         { staticClass: "svg-icon svg-icon-2" },
                                         [
                                           _c("i", {
-                                            staticClass: "fas fa-circle"
+                                            staticClass: "fas fa-folder fs-4"
                                           })
                                         ]
                                       )
@@ -33725,22 +33632,6 @@ var staticRenderFns = [
           [_vm._v("Seçenekler")]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "menu-link" }, [
-      _c("span", { staticClass: "menu-icon" }, [
-        _c("span", { staticClass: "svg-icon svg-icon-2" }, [
-          _c("i", { staticClass: "fas fa-folder fs-4" })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "menu-title" }, [_vm._v("Menü Link")]),
-      _vm._v(" "),
-      _c("span", { staticClass: "menu-arrow" })
     ])
   }
 ]
@@ -58729,7 +58620,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"login":1,"setting":1,"resources_js_pages_admin_projects_vue":1,"create":1,"project":1,"specification":1,"todos":1,"notes":1,"profile":1,"account":1,"account-detail":1,"account-projects":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"login":1,"setting":1,"resources_js_pages_admin_projects_vue":1,"create":1,"project":1,"specification":1,"todos":1,"notes":1,"profile":1,"account":1,"account-detail":1,"account-projects":1,"my-projects":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			if (chunkId === "edit") return "js/edit.js";
 /******/ 			if (chunkId === "team") return "js/team.js";
 /******/ 			// return url for filenames based on template

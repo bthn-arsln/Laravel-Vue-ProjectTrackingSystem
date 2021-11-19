@@ -12,7 +12,7 @@
       <!--begin::Tab pane-->
       <div id="kt_project_targets_card_pane" class="tab-pane fade show active">
         <!--begin::Row-->
-        <div class="row g-9">
+        <div class="row g-9" @scroll="loadData">
           <!--begin::Col-->
           <div class="col-md-4 col-lg-12 col-xl-4">
             <!--begin::Col header-->
@@ -29,15 +29,15 @@
 
             <!--begin::Card-->
             <note-item
-              v-for="(note, index) in noteData.notes"
+              v-for="(note, index) in noteData.notes.slice(0, dataCount)"
               :key="index"
               :note="note"
-              v-show="noteData.notes"
+              v-show="noteData.notes.length"
               @submitNote="showNote"
             />
             <!--end::Card-->
 
-            <div class="alert alert-info" v-show="!noteData.notes">
+            <div class="alert alert-info" v-show="!noteData.notes.length">
               <i class="fas fa-info-circle text-info"></i>
               Proje yöneticisi henüz bu projeye ait bir not eklememiş!
             </div>
@@ -65,7 +65,7 @@
 
             <!--begin::Card-->
             <note-item
-              v-for="(note, index) in personel.notes"
+              v-for="(note, index) in personel.notes.slice(0, dataCount)"
               :key="index"
               :note="note"
               v-show="personel.notes.length"
@@ -84,11 +84,15 @@
       <!--end::Tab pane-->
     </div>
     <!--end::Tab Content-->
+    <button @click="loadData" class="btn btn-primary er w-100 fs-6 px-8 py-4">
+      Daha Fazla Not Göster
+    </button>
     <!--begin::Pagination-->
     <pagination
       loadPage="loadNotes"
       :dataParameter="slug"
       :paginationData="noteData.team"
+      class="py-4"
     />
     <!--end::Pagination-->
     <edit-note-modal :note="note" :projectSlug="slug" />
@@ -110,22 +114,26 @@ export default {
   data() {
     return {
       slug: this.$route.params.project,
+      dataCount: 5,
     };
   },
-  methods: {
-    showNote(id) {
-      this.$store.dispatch("loadNote", id);
-    },
-  },
-  computed: mapGetters({
-    noteData: "getNotes",
-    note: "getNote",
-  }),
   mounted() {
     this.$store.dispatch("loadNotes", {
       param: this.slug,
       page: this.$route.query.page,
     });
   },
+  methods: {
+    showNote(id) {
+      this.$store.dispatch("loadNote", id);
+    },
+    loadData() {
+      this.dataCount += 5;
+    },
+  },
+  computed: mapGetters({
+    noteData: "getNotes",
+    note: "getNote",
+  }),
 };
 </script>

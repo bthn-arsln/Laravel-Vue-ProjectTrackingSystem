@@ -196,6 +196,14 @@ const routes = [
                     )
             }
         ]
+    },
+    {
+        path: "/projects",
+        name: "MyProjects",
+        component: () =>
+            import(
+                /* webpackChunkName: 'my-projects' */ "@/pages/developer/projects"
+            )
     }
 ];
 

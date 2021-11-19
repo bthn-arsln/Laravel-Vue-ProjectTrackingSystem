@@ -427,6 +427,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -440,24 +444,28 @@ __webpack_require__.r(__webpack_exports__);
   name: "ProjectNotes",
   data: function data() {
     return {
-      slug: this.$route.params.project
+      slug: this.$route.params.project,
+      dataCount: 5
     };
   },
-  methods: {
-    showNote: function showNote(id) {
-      this.$store.dispatch("loadNote", id);
-    }
-  },
-  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
-    noteData: "getNotes",
-    note: "getNote"
-  }),
   mounted: function mounted() {
     this.$store.dispatch("loadNotes", {
       param: this.slug,
       page: this.$route.query.page
     });
-  }
+  },
+  methods: {
+    showNote: function showNote(id) {
+      this.$store.dispatch("loadNote", id);
+    },
+    loadData: function loadData() {
+      this.dataCount += 5;
+    }
+  },
+  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
+    noteData: "getNotes",
+    note: "getNote"
+  })
 });
 
 /***/ }),
@@ -573,6 +581,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -586,24 +598,28 @@ __webpack_require__.r(__webpack_exports__);
   name: "ProjectNotes",
   data: function data() {
     return {
-      slug: this.$route.params.project
+      slug: this.$route.params.project,
+      dataCount: 5
     };
   },
-  methods: {
-    showNote: function showNote(id) {
-      this.$store.dispatch("loadNote", id);
-    }
-  },
-  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
-    noteData: "getNotes",
-    note: "getNote"
-  }),
   mounted: function mounted() {
     this.$store.dispatch("loadNotes", {
       param: this.slug,
       page: this.$route.query.page
     });
-  }
+  },
+  methods: {
+    showNote: function showNote(id) {
+      this.$store.dispatch("loadNote", id);
+    },
+    loadData: function loadData() {
+      this.dataCount += 5;
+    }
+  },
+  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
+    noteData: "getNotes",
+    note: "getNote"
+  })
 });
 
 /***/ }),
@@ -1306,7 +1322,7 @@ var render = function() {
           [
             _c(
               "div",
-              { staticClass: "row g-9" },
+              { staticClass: "row g-9", on: { scroll: _vm.loadData } },
               [
                 _c(
                   "div",
@@ -1314,14 +1330,17 @@ var render = function() {
                   [
                     _vm._m(1),
                     _vm._v(" "),
-                    _vm._l(_vm.noteData.notes, function(note, index) {
+                    _vm._l(_vm.noteData.notes.slice(0, _vm.dataCount), function(
+                      note,
+                      index
+                    ) {
                       return _c("note-item", {
                         directives: [
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.noteData.notes,
-                            expression: "noteData.notes"
+                            value: _vm.noteData.notes.length,
+                            expression: "noteData.notes.length"
                           }
                         ],
                         key: index,
@@ -1337,8 +1356,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: !_vm.noteData.notes,
-                            expression: "!noteData.notes"
+                            value: !_vm.noteData.notes.length,
+                            expression: "!noteData.notes.length"
                           }
                         ],
                         staticClass: "alert alert-info"
@@ -1378,7 +1397,10 @@ var render = function() {
                         _c("div", { staticClass: "h-3px w-100 bg-success" })
                       ]),
                       _vm._v(" "),
-                      _vm._l(personel.notes, function(note, index) {
+                      _vm._l(personel.notes.slice(0, _vm.dataCount), function(
+                        note,
+                        index
+                      ) {
                         return _c("note-item", {
                           directives: [
                             {
@@ -1429,7 +1451,17 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary er w-100 fs-6 px-8 py-4",
+          on: { click: _vm.loadData }
+        },
+        [_vm._v("\n    Daha Fazla Not Göster\n  ")]
+      ),
+      _vm._v(" "),
       _c("pagination", {
+        staticClass: "py-4",
         attrs: {
           loadPage: "loadNotes",
           dataParameter: _vm.slug,
@@ -1521,7 +1553,10 @@ var render = function() {
                   [
                     _vm._m(1),
                     _vm._v(" "),
-                    _vm._l(_vm.noteData.notes, function(note, index) {
+                    _vm._l(_vm.noteData.notes.slice(0, _vm.dataCount), function(
+                      note,
+                      index
+                    ) {
                       return _c("note-item", {
                         directives: [
                           {
@@ -1585,7 +1620,10 @@ var render = function() {
                         _c("div", { staticClass: "h-3px w-100 bg-success" })
                       ]),
                       _vm._v(" "),
-                      _vm._l(personel.notes, function(note, index) {
+                      _vm._l(personel.notes.slice(0, _vm.dataCount), function(
+                        note,
+                        index
+                      ) {
                         return _c("note-item", {
                           directives: [
                             {
@@ -1636,7 +1674,17 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary er w-100 fs-6 px-8 py-4",
+          on: { click: _vm.loadData }
+        },
+        [_vm._v("\n    Daha Fazla Not Göster\n  ")]
+      ),
+      _vm._v(" "),
       _c("pagination", {
+        staticClass: "py-4",
         attrs: {
           loadPage: "loadNotes",
           dataParameter: _vm.slug,

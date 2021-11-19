@@ -54,7 +54,7 @@ export const note = {
             fd.append("description", note.description);
             fd.append("_method", "PUT");
             await axios.post("/api/notes/" + note.id, fd).then(() => {
-                this.$swal({
+                Vue.swal({
                     icon: "success",
                     title: "Not başarıyla güncellendi!",
                     showConfirmButton: false,

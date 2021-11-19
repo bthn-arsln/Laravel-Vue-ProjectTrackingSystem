@@ -29,7 +29,7 @@
 
             <!--begin::Card-->
             <note-item
-              v-for="(note, index) in noteData.notes"
+              v-for="(note, index) in noteData.notes.slice(0, dataCount)"
               :key="index"
               :note="note"
               v-show="noteData.notes"
@@ -65,7 +65,7 @@
 
             <!--begin::Card-->
             <note-item
-              v-for="(note, index) in personel.notes"
+              v-for="(note, index) in personel.notes.slice(0, dataCount)"
               :key="index"
               :note="note"
               v-show="personel.notes != 0"
@@ -84,11 +84,15 @@
       <!--end::Tab pane-->
     </div>
     <!--end::Tab Content-->
+    <button @click="loadData" class="btn btn-primary er w-100 fs-6 px-8 py-4">
+      Daha Fazla Not Göster
+    </button>
     <!--begin::Pagination-->
     <pagination
       loadPage="loadNotes"
       :dataParameter="slug"
       :paginationData="noteData.team"
+      class="py-4"
     />
     <!--end::Pagination-->
     <edit-note-modal :note="note" :projectSlug="slug" />
@@ -110,22 +114,26 @@ export default {
   data() {
     return {
       slug: this.$route.params.project,
+      dataCount: 5,
     };
   },
-  methods: {
-    showNote(id) {
-      this.$store.dispatch("loadNote", id);
-    },
-  },
-  computed: mapGetters({
-    noteData: "getNotes",
-    note: "getNote",
-  }),
   mounted() {
     this.$store.dispatch("loadNotes", {
       param: this.slug,
       page: this.$route.query.page,
     });
   },
+  methods: {
+    showNote(id) {
+      this.$store.dispatch("loadNote", id);
+    },
+    loadData() {
+      this.dataCount += 5;
+    },
+  },
+  computed: mapGetters({
+    noteData: "getNotes",
+    note: "getNote",
+  }),
 };
 </script>

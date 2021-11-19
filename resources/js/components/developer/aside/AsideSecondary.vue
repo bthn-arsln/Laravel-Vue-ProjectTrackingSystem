@@ -102,7 +102,7 @@
                           lh-0
                           me-4
                         "
-                        v-show="title != null"
+                        v-show="title != ''"
                         @click="title = ''"
                       >
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
@@ -259,46 +259,12 @@
                       >
                     </div>
                   </div>
-                  <div
-                    data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion"
-                  >
-                    <span class="menu-link">
-                      <span class="menu-icon">
-                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                        <span class="svg-icon svg-icon-2">
-                          <i class="fas fa-folder fs-4"></i>
-                        </span>
-                        <!--end::Svg Icon-->
-                      </span>
-                      <span class="menu-title">Menü Link</span>
-                      <span class="menu-arrow"></span>
-                    </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                      <div
-                        data-kt-menu-trigger="click"
-                        class="menu-item menu-accordion"
-                      >
-                        <router-link
-                          to=""
-                          class="menu-link"
-                          active-class="active"
-                          exact
-                        >
-                          <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                          </span>
-                          <span class="menu-title">Alt Menü</span>
-                        </router-link>
-                      </div>
-                    </div>
-                  </div>
                   <div class="menu-item">
-                    <router-link class="menu-link" to="apps/calendar.html">
+                    <router-link class="menu-link" :to="{ name: 'MyProjects' }">
                       <span class="menu-icon">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                         <span class="svg-icon svg-icon-2">
-                          <i class="fas fa-circle"></i>
+                          <i class="fas fa-folder fs-4"></i>
                         </span>
                         <!--end::Svg Icon-->
                       </span>
@@ -326,7 +292,7 @@ export default {
   name: "AsideSecondary",
   data() {
     return {
-      title: null,
+      title: "",
     };
   },
   computed: mapGetters({ workflow: "getWorkflow", auth: "getMyProfileInfo" }),

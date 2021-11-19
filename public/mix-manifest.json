@@ -13,5 +13,6 @@
     "/js/account.js": "/js/account.js",
     "/js/account-detail.js": "/js/account-detail.js",
     "/js/account-projects.js": "/js/account-projects.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/my-projects.js": "/js/my-projects.js"
 }
